@@ -5,8 +5,8 @@ function BlessTheBlizzard:Init()
 
     -- name, rank, icon, castTime, minRange, maxRange, spellId = GetSpellInfo("Blizzard")
 
-    if hasBlizzardSpell then
-        print("Your Blizzards will be blessed!")
+    if (hasBlizzardSpell) then
+        print("YOUR BLIZZARDS ARE BLESSED")
     else
         print("PLAY YOUR MAGE BRUH")
     end
@@ -19,4 +19,11 @@ function BlessTheBlizzard:HideGryphons()
     MainMenuBarRightEndCap:Hide()
 end
 
-BlessTheBlizzard:Init()
+local EventFrame = CreateFrame("frame", "EventFrame")
+EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+EventFrame:SetScript("OnEvent", function(self, event, ...)
+	if (event == "PLAYER_ENTERING_WORLD") then
+		BlessTheBlizzard:Init()
+	end
+end)
