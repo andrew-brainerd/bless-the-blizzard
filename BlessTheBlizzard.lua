@@ -21,16 +21,23 @@ local EventFrame = CreateFrame("frame", "EventFrame")
 
 EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 EventFrame:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
+EventFrame:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")
 
 EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "PLAYER_ENTERING_WORLD") then
         BlessTheBlizzard:Init()
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
-        local unit, _, spellId = ...;
+        local _, _, spellId = ...;
+
+        if (spellId == 6141) then
+            PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
+        end
+    elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
+        local _, _, spellId = ...;
 
         if (spellId == 6141) then
             print("I BLESS THE RAINS DOWN IN AFRICAAAAAAA")
-            PlaySoundFile("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
+            StopMusic()
         end
     end
 end)
