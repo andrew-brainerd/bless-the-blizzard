@@ -30,6 +30,7 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
 
         if (spellId == 6141) then
             print("I BLESS THE RAINS DOWN IN AFRICAAAAAAA")
+            PlaySoundFile("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
         end
     end
 end)
