@@ -1,14 +1,12 @@
-BlessTheBlizzard = { }
+BlessTheBlizzard = {}
 
 function BlessTheBlizzard:Init()
     hasBlizzardSpell = DoesSpellExist("Blizzard")
 
-    -- name, rank, icon, castTime, minRange, maxRange, spellId = GetSpellInfo("Blizzard")
-
     if (hasBlizzardSpell) then
         print("YOUR BLIZZARDS ARE BLESSED")
     else
-        print("PLAY YOUR MAGE BRUH")
+        print("YOU SHOULD BE A FIREBALLIN MAGE BRUH")
     end
 
     BlessTheBlizzard:HideGryphons()
@@ -20,10 +18,18 @@ function BlessTheBlizzard:HideGryphons()
 end
 
 local EventFrame = CreateFrame("frame", "EventFrame")
+
 EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+EventFrame:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
 
 EventFrame:SetScript("OnEvent", function(self, event, ...)
-	if (event == "PLAYER_ENTERING_WORLD") then
-		BlessTheBlizzard:Init()
-	end
+    if (event == "PLAYER_ENTERING_WORLD") then
+        BlessTheBlizzard:Init()
+    elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
+        local unit, _, spellId = ...;
+
+        if (spellId == 6141) then
+            print("I BLESS THE RAINS DOWN IN AFRICAAAAAAA")
+        end
+    end
 end)
