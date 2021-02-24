@@ -1,0 +1,7 @@
+## Interface: 11306
+## Title: BlessTheBlizzard
+## Notes: Africa has nothing on Blizzard
+## Author: andrew-brainerd
+## Version: 1.0
+
+BlessTheBlizzard.lua
