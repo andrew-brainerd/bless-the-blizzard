@@ -5,8 +5,6 @@ function BlessTheBlizzard:Init()
 
     if (hasBlizzardSpell) then
         print("YOUR BLIZZARDS ARE BLESSED")
-    else
-        print("YOU SHOULD BE A FIREBALLIN MAGE BRUH")
     end
 
     BlessTheBlizzard:HideGryphons()
@@ -29,14 +27,13 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
 
-        if (spellId == 6141) then
+        if (spellId == 8427) then
             PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
         local _, _, spellId = ...;
 
-        if (spellId == 6141) then
-            print("I BLESS THE RAINS DOWN IN AFRICAAAAAAA")
+        if (spellId == 8427) then
             StopMusic()
         end
     end
