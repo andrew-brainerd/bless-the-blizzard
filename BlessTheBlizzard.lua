@@ -6,13 +6,6 @@ function BlessTheBlizzard:Init()
     if (hasBlizzardSpell) then
         print("YOUR BLIZZARDS ARE BLESSED")
     end
-
-    BlessTheBlizzard:HideGryphons()
-end
-
-function BlessTheBlizzard:HideGryphons()
-    MainMenuBarLeftEndCap:Hide()
-    MainMenuBarRightEndCap:Hide()
 end
 
 local EventFrame = CreateFrame("frame", "EventFrame")

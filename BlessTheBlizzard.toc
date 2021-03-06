@@ -2,6 +2,6 @@
 ## Title: BlessTheBlizzard
 ## Notes: Africa has nothing on Blizzard
 ## Author: andrew-brainerd
-## Version: 1.2
+## Version: 1.3
 
 BlessTheBlizzard.lua
