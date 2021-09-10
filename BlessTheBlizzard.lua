@@ -20,13 +20,13 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
 
-        if (spellId == 8427) then
+        if (spellId == 27085) then
             PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
         local _, _, spellId = ...;
 
-        if (spellId == 8427) then
+        if (spellId == 27085) then
             StopMusic()
         end
     end
