@@ -1,0 +1,7 @@
+{
+  "name": "bless-the-blizzard",
+  "private": true,
+  "scripts": {
+    "build": "bash scripts/build.sh"
+  }
+}
