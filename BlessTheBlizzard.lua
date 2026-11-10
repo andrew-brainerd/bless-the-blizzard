@@ -1,5 +1,3 @@
-BlessTheBlizzard = {}
-
 -- Blizzard spell IDs: 10 in MoP; ranks 1-6 in Forever
 local BLIZZARD_SPELL_IDS = {
     [10] = true,
@@ -35,7 +33,7 @@ local function IsBlizzard(spellId)
     return BLIZZARD_SPELL_IDS[spellId] == true
 end
 
-function BlessTheBlizzard:Init()
+local function Announce()
     if (KnowsBlizzard()) then
         print("YOUR BLIZZARDS ARE BLESSED")
     end
@@ -49,7 +47,7 @@ EventFrame:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player")
 
 EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "PLAYER_ENTERING_WORLD") then
-        BlessTheBlizzard:Init()
+        Announce()
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
 
