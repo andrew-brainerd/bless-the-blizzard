@@ -4,6 +4,8 @@
 
 ### Fixed
 - No error if the game hides the channel's spell ID in combat (Forever); the addon reads it from the player's channel info instead, or skips the music if that's hidden too.
+- The music always stops when the Blizzard channel ends, even if the spell ID is hidden at that point.
+- The addon only calls StopMusic when it started the music itself, so it leaves other music alone.
 
 ## 3.1 — 2026-11-10
 

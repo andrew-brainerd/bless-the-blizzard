@@ -19,6 +19,8 @@ local function KnowsBlizzard()
     return false
 end
 
+local playing = false
+
 local function IsSecret(value)
     return issecretvalue ~= nil and issecretvalue(value)
 end
@@ -53,12 +55,12 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
 
         if (IsBlizzard(spellId)) then
             PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
+            playing = true
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
-        local _, _, spellId = ...;
-
-        if (IsBlizzard(spellId)) then
+        if (playing) then
             StopMusic()
+            playing = false
         end
     end
 end)
