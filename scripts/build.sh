@@ -9,6 +9,10 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 VERSION="$(sed -n 's/^## Version:[[:space:]]*//p' "$ADDON_NAME.toc" | tr -d '\r')"
+if [ -z "$VERSION" ]; then
+    echo "No ## Version line in $ADDON_NAME.toc" >&2
+    exit 1
+fi
 ZIP="dist/$ADDON_NAME-$VERSION.zip"
 
 # CurseForge expects a top-level folder matching the TOC name
