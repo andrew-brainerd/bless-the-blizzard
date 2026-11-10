@@ -7,6 +7,9 @@
 - The music always stops when the Blizzard channel ends, even if the spell ID is hidden at that point.
 - The addon only calls StopMusic when it started the music itself, so it leaves other music alone.
 
+### Changed
+- On characters that aren't mages the addon registers no spell events and stays idle.
+
 ## 3.1 — 2026-11-10
 
 ### Added

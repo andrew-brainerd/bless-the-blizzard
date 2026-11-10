@@ -41,12 +41,19 @@ end
 
 local EventFrame = CreateFrame("Frame")
 
-EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-EventFrame:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_START", "player")
-EventFrame:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player")
+EventFrame:RegisterEvent("PLAYER_LOGIN")
 
 EventFrame:SetScript("OnEvent", function(self, event, ...)
-    if (event == "PLAYER_ENTERING_WORLD") then
+    if (event == "PLAYER_LOGIN") then
+        local _, class = UnitClass("player")
+        self:UnregisterEvent("PLAYER_LOGIN")
+        if (class ~= "MAGE") then
+            return
+        end
+        self:RegisterEvent("PLAYER_ENTERING_WORLD")
+        self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_START", "player")
+        self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player")
+    elseif (event == "PLAYER_ENTERING_WORLD") then
         Announce()
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
