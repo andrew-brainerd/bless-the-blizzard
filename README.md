@@ -4,7 +4,7 @@ A World of Warcraft addon for mages, for Mists of Pandaria Classic and WoW: Fore
 
 ## What it does
 
-- On login and every loading screen, if you know Blizzard (any rank), it prints `YOUR BLIZZARDS ARE BLESSED` to chat.
+- On login (or `/reload`), if you're a mage who knows Blizzard (any rank), it prints `YOUR BLIZZARDS ARE BLESSED` to chat once.
 - When you start channeling Blizzard, it plays the bundled `africa.mp3` through the game's music channel.
 - When the channel ends (finished, interrupted, or cancelled), it stops the music.
 

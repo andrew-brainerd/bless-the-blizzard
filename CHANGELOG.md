@@ -9,6 +9,7 @@
 
 ### Changed
 - On characters that aren't mages the addon registers no spell events and stays idle.
+- `YOUR BLIZZARDS ARE BLESSED` prints once per login or `/reload`, not on every loading screen.
 
 ## 3.1 — 2026-11-10
 

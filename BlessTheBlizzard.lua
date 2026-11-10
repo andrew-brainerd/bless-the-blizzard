@@ -54,6 +54,7 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
         self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_START", "player")
         self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player")
     elseif (event == "PLAYER_ENTERING_WORLD") then
+        self:UnregisterEvent("PLAYER_ENTERING_WORLD")
         Announce()
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
