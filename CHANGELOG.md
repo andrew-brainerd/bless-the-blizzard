@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- No error if the game hides the channel's spell ID in combat (Forever); the addon reads it from the player's channel info instead, or skips the music if that's hidden too.
+
 ## 3.1 — 2026-11-10
 
 ### Added

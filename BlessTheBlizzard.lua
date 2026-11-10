@@ -19,6 +19,20 @@ local function KnowsBlizzard()
     return false
 end
 
+local function IsSecret(value)
+    return issecretvalue ~= nil and issecretvalue(value)
+end
+
+local function IsBlizzard(spellId)
+    if (IsSecret(spellId)) then
+        spellId = select(8, UnitChannelInfo("player"))
+        if (IsSecret(spellId)) then
+            return false
+        end
+    end
+    return BLIZZARD_SPELL_IDS[spellId] == true
+end
+
 function BlessTheBlizzard:Init()
     if (KnowsBlizzard()) then
         print("YOUR BLIZZARDS ARE BLESSED")
@@ -37,13 +51,13 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
 
-        if (BLIZZARD_SPELL_IDS[spellId]) then
+        if (IsBlizzard(spellId)) then
             PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
         local _, _, spellId = ...;
 
-        if (BLIZZARD_SPELL_IDS[spellId]) then
+        if (IsBlizzard(spellId)) then
             StopMusic()
         end
     end
