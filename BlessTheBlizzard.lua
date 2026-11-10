@@ -1,10 +1,26 @@
 BlessTheBlizzard = {}
 
--- Ranks were removed in Cataclysm; Blizzard is a single spell ID in MoP
-local BLIZZARD_SPELL_ID = 10
+-- Blizzard spell IDs: 10 in MoP; ranks 1-6 in Forever
+local BLIZZARD_SPELL_IDS = {
+    [10] = true,
+    [6141] = true,
+    [8427] = true,
+    [10185] = true,
+    [10186] = true,
+    [10187] = true,
+}
+
+local function KnowsBlizzard()
+    for spellId in pairs(BLIZZARD_SPELL_IDS) do
+        if (IsPlayerSpell(spellId)) then
+            return true
+        end
+    end
+    return false
+end
 
 function BlessTheBlizzard:Init()
-    if (IsPlayerSpell(BLIZZARD_SPELL_ID)) then
+    if (KnowsBlizzard()) then
         print("YOUR BLIZZARDS ARE BLESSED")
     end
 end
@@ -21,13 +37,13 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
         local _, _, spellId = ...;
 
-        if (spellId == BLIZZARD_SPELL_ID) then
+        if (BLIZZARD_SPELL_IDS[spellId]) then
             PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
         local _, _, spellId = ...;
 
-        if (spellId == BLIZZARD_SPELL_ID) then
+        if (BLIZZARD_SPELL_IDS[spellId]) then
             StopMusic()
         end
     end
