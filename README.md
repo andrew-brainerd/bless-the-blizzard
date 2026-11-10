@@ -8,9 +8,9 @@ A World of Warcraft addon for mages, for Mists of Pandaria Classic and WoW: Fore
 - When you start channeling Blizzard, it plays the bundled `africa.mp3` through the game's music channel.
 - When the channel ends (finished, interrupted, or cancelled), it stops the music.
 
-There are no slash commands, options, or saved variables.
+There are no options or saved variables.
 
-The track plays through the in-game music channel, so you need music enabled with the volume turned up to hear it.
+The track plays through the in-game music channel, so you need music enabled with the volume turned up to hear it. Type `/btb test` to play it for a few seconds and check your volume.
 
 ## Supported game versions
 

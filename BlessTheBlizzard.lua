@@ -17,7 +17,24 @@ local function KnowsBlizzard()
     return false
 end
 
+local MUSIC_PATH = "Interface\\AddOns\\BlessTheBlizzard\\africa.mp3"
+local TEST_SECONDS = 6
+
 local playing = false
+local playId = 0
+
+local function Play()
+    PlayMusic(MUSIC_PATH)
+    playing = true
+    playId = playId + 1
+end
+
+local function Stop()
+    if (playing) then
+        StopMusic()
+        playing = false
+    end
+end
 
 local function IsSecret(value)
     return issecretvalue ~= nil and issecretvalue(value)
@@ -60,13 +77,26 @@ EventFrame:SetScript("OnEvent", function(self, event, ...)
         local _, _, spellId = ...;
 
         if (IsBlizzard(spellId)) then
-            PlayMusic("Interface\\AddOns\\BlessTheBlizzard\\africa.mp3")
-            playing = true
+            Play()
         end
     elseif (event == "UNIT_SPELLCAST_CHANNEL_STOP") then
-        if (playing) then
-            StopMusic()
-            playing = false
-        end
+        Stop()
     end
 end)
+
+SLASH_BLESSTHEBLIZZARD1 = "/btb"
+SlashCmdList.BLESSTHEBLIZZARD = function(msg)
+    local command = string.lower(msg or ""):match("^%s*(%S*)")
+    if (command == "test") then
+        Play()
+        local id = playId
+        print("Bless The Blizzard: playing the track for " .. TEST_SECONDS .. " seconds on the Music channel. Turn up Music volume if you hear nothing.")
+        C_Timer.After(TEST_SECONDS, function()
+            if (playId == id) then
+                Stop()
+            end
+        end)
+    else
+        print("Bless The Blizzard: /btb test plays the track briefly so you can check your volume.")
+    end
+end
