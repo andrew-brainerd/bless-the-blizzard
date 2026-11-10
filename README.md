@@ -39,3 +39,12 @@ npm run build
 ```
 
 This writes `dist/BlessTheBlizzard-<version>.zip`. The version comes from the `## Version` line in the `.toc`, and the zip has a top-level `BlessTheBlizzard/` folder ready to upload or extract into `Interface/AddOns`.
+
+## Tests
+
+```sh
+npm test
+# or: lua51 tests/run.lua
+```
+
+The tests load the addon in plain Lua 5.1 with stubbed WoW globals, so no game client is needed.
