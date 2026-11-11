@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.2 — 2026-11-10
 
 ### Added
 - `/btb test` plays the track for a few seconds so you can check your music volume.
